@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Admissions Form</h1>
+    <form id="admissions-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+            <label for="course">Select Course:</label>
+            <select id="course" name="course" required>
+                <option value="">Select Course</option>
+                <option value="Networking Fundamentals">Networking Fundamentals</option>
+                <option value="Cybersecurity Essentials">Cybersecurity Essentials</option>
+                <option value="Web Development">Web Development</option>
+                <!-- Add more courses here -->
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="success-message" class="hidden">Thank you for submitting your admissions form!</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('admissions-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        successMessage.classList.remove('visible');
+        successMessage.classList.add('hidden');
+        setTimeout(function () {
+            form.reset();
+            successMessage.classList.remove('hidden');
+            successMessage.classList.add('visible');
+        }, 500);
+    });
+});
+
+</script>
+</body>
+</html>
+
